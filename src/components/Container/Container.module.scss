@@ -1,0 +1,14 @@
+.container {
+  max-width: 100rem;
+  margin: 8rem auto;
+  padding: 3rem;
+  background-color: white;
+  border-radius: 3px;
+
+  box-shadow: 0 1rem 3rem rgba($color: #000000, $alpha: 0.5);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
