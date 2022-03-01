@@ -3,7 +3,6 @@ import Container from "./components/Container/Container";
 import Form from "./components/Form/Form";
 import Popup from "./components/Popup/Popup";
 import ToDoList from "./components/ToDo/ToDoList";
-import TaskProvider from "./tasks/TaskProvider";
 
 function App() {
   const [showPopup, setPopup] = useState({ status: false, msg: "" });
@@ -26,13 +25,11 @@ function App() {
     <React.Fragment>
       {showPopup.status ? <Popup message={showPopup.msg} /> : ""}
 
-      <TaskProvider>
-        <Container>
-          <Form onNotice={showPopupHandler} />
+      <Container>
+        <Form onNotice={showPopupHandler} />
 
-          <ToDoList onNotice={showPopupHandler} />
-        </Container>
-      </TaskProvider>
+        <ToDoList onNotice={showPopupHandler} />
+      </Container>
     </React.Fragment>
   );
 }

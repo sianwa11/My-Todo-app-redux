@@ -1,5 +1,4 @@
-import React, { useContext, useState } from "react";
-import TaskContext from "../../tasks/task-context";
+import React, { useState } from "react";
 import ListItem from "./ListItem/ListItem";
 
 import styles from "./ToDo.module.scss";
@@ -16,7 +15,6 @@ const FILTER_TASKS = {
 const ToDoList = (props) => {
   const [filter, setFilter] = useState("All");
 
-  const taskCtx = useContext(TaskContext);
   const tasks = useSelector((state) => state.tasks);
 
   const filterHandler = (e) => {

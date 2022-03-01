@@ -1,8 +1,7 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 
 import { FaTrash, FaEdit, FaSave, FaArrowLeft } from "react-icons/fa";
 import styles from "./ListItem.module.scss";
-import TaskContext from "../../../tasks/task-context";
 
 import { useDispatch } from "react-redux";
 import {
@@ -14,8 +13,6 @@ import {
 const ListItem = (props) => {
   const [iseditTask, setEditTask] = useState(false);
   const dispatch = useDispatch();
-
-  const taskCtx = useContext(TaskContext);
 
   const inputEl = useRef(null);
 

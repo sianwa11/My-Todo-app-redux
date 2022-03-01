@@ -1,5 +1,4 @@
-import React, { useContext, useState } from "react";
-import TaskContext from "../../tasks/task-context";
+import React, { useState } from "react";
 import Button from "../Button/Button";
 
 import styles from "./Form.module.scss";
@@ -13,8 +12,6 @@ const Form = (props) => {
   const [newTask, setTask] = useState("");
 
   const dispatch = useDispatch();
-
-  const taskCtx = useContext(TaskContext);
 
   const taskHandler = (e) => {
     setTask(e.target.value);
