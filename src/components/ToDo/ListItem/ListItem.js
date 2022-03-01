@@ -4,15 +4,24 @@ import { FaTrash, FaEdit, FaSave, FaArrowLeft } from "react-icons/fa";
 import styles from "./ListItem.module.scss";
 import TaskContext from "../../../tasks/task-context";
 
+import { useDispatch } from "react-redux";
+import {
+  deleteTask,
+  editTask,
+  toggleComplete,
+} from "../../../tasks/tasksSlice";
+
 const ListItem = (props) => {
-  const [editTask, setEditTask] = useState(false);
+  const [iseditTask, setEditTask] = useState(false);
+  const dispatch = useDispatch();
 
   const taskCtx = useContext(TaskContext);
 
   const inputEl = useRef(null);
 
   const deleteItemHandler = (id) => {
-    taskCtx.deleteTask(id);
+    // taskCtx.deleteTask(id);
+    dispatch(deleteTask({ id: id }));
   };
 
   const editItemHandler = (id) => {
@@ -23,11 +32,13 @@ const ListItem = (props) => {
       return;
     }
 
-    taskCtx.editTask(id, name);
+    // taskCtx.editTask(id, name);
+    dispatch(editTask({ name, id }));
   };
 
   const toggleCompleteHandler = (id) => {
-    taskCtx.toggleComplete(id);
+    // taskCtx.toggleComplete(id);
+    dispatch(toggleComplete({ id }));
   };
 
   const onSubmitHandler = (e) => {
@@ -94,7 +105,7 @@ const ListItem = (props) => {
     </>
   );
 
-  return editTask ? (
+  return iseditTask ? (
     <li className={styles.form}>{editTemplate}</li>
   ) : (
     <li className={styles.item}>{itemsTemplate}</li>

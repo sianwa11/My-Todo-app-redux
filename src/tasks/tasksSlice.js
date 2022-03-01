@@ -12,9 +12,33 @@ export const taskSlice = createSlice({
     addTask(state, action) {
       state.push(action.payload);
     },
-    deleteTask(state, action) {},
-    editTask(state, action) {},
-    toggleComplete(state, action) {},
+    deleteTask(state, action) {
+      const { id } = action.payload;
+      console.log(id);
+      return state.filter((task) => task.id !== id);
+    },
+    editTask(state, action) {
+      const { name, id } = action.payload;
+      const editedTask = state.map((task) => {
+        if (task.id === id) {
+          return { ...task, name: name };
+        }
+        return task;
+      });
+
+      return editedTask;
+    },
+    toggleComplete(state, action) {
+      const { id } = action.payload;
+      const toggledTask = state.map((task) => {
+        if (task.id === id) {
+          return { ...task, completed: !task.completed };
+        }
+        return task;
+      });
+
+      return toggledTask;
+    },
   },
 });
 
